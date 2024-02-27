@@ -1,5 +1,6 @@
+from clothing import Clothing
+
 class Human:
-    
     MAX_ENERGY = 100
     MOVE_ENERGY = 10
     REPRODUCE_ENERGY = 20
@@ -8,12 +9,16 @@ class Human:
         self.name = name
         self.age = age
         self.energy = energy
-    
+        self.clothing = []
+
     def __repr__(self) -> str:
         return f'human(name={self.name}, age={self.age})'
 
     def __str__(self) -> str:
         return f'{self.name} is {self.age} years old.'
+
+    def dress(self, clothing:Clothing):
+        self.clothing.add(clothing)
 
     def eat(self, amount) -> int:
         potential_energy = self.energy + amount
@@ -44,4 +49,7 @@ class Human:
             self.energy = potential_energy
             return True
         else:
-            return False
+            return False    
+
+    def undress(self, clothing:Clothing):
+        self.clothing.remove(clothing)
